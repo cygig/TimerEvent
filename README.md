@@ -9,7 +9,7 @@ Used to setup the timer. Use this within setup(). myPeriod is the interval in mi
 For example: myTimer.set(1000, myFunction);
 
 ## set(unsigned long myTimer,unsigned long myPeriod,void (*myFunction)())
-Similar to the one above, but myTimer is used to specific your own timer (an unsigned long which increased with time.) Arduino's millis() will be used otherwise.
+Similar to the one above, myTimer is the starting time in unsigned long, which will otherwise be 0 if not declared.
 
 ## reset()
 Resets the timer.
