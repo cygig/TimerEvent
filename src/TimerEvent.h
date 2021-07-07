@@ -28,7 +28,8 @@ class TimerEvent {
   	void disable();
   	void enable();
   	void update();
-	  void setInterval( unsigned long myPeriod );
+	void setInterval( unsigned long myPeriod );
+	bool start();
 
   private: 
     bool active;
