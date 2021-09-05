@@ -2,42 +2,44 @@
 
 TimerEvent::TimerEvent(){
 // Nothing inside constructor.
+// We use set instead if not we need to declare myFunction on top of setup().
 }
 
 void TimerEvent::set(unsigned long myPeriod,void (*myFunction)()){
-  active = true;
-	timer = 0;
-	period = myPeriod;
-	function = myFunction;	
+  set(millis(), myPeriod, myFunction);	
 }
 
-void TimerEvent::set(unsigned long myTimer,unsigned long myPeriod,void (*myFunction)()){
-  active = true;
+void TimerEvent::set(unsigned long myLastTime,unsigned long myPeriod,void (*myFunction)()){
+  enabled = true;
 	period = myPeriod;
-	timer = myTimer;
-	function = myFunction;	
+	lastTime = myLastTime;
+	callBackFunction = myFunction;	
 	
 }
 
 void TimerEvent::reset(){
-    timer = millis();
+    lastTime = millis();
 }
 
 void TimerEvent::disable(){
-    active = false;
+    enabled = false;
 }
 
 void TimerEvent::enable(){
-	active = true;
+	enabled = true;
 }
 
 void TimerEvent::update(){
-  if ( active && ((unsigned long) (millis()-timer) >= period) ) {
-    function();
-	  timer = millis();
+  if ( enabled && ((unsigned long) (millis()-lastTime) >= period) ) {
+    callBackFunction();
+	  lastTime = millis();
   }
 }
 
-void TimerEvent::setInterval( unsigned long myPeriod){
+void TimerEvent::setPeriod( unsigned long myPeriod){
 	period = myPeriod;
+}
+
+bool TimerEvent::isEnabled(){
+  return enabled;
 }

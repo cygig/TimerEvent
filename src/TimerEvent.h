@@ -1,5 +1,5 @@
 /*
-TimerEvent 0.4 For Arduino by cygig
+TimerEvent 0.4.0 For Arduino by cygig
 TimerEvent is based on TimedAction 1.6 by Alexander Brevig (alexanderbrevig@gmail.com).
 It is updated to work with Arduino IDE 1.8.5.
 
@@ -8,14 +8,21 @@ to delay() function.
 
 */
 
-#ifndef TIMEREVENT
-#define TIMEREVENT
+#ifndef TIMEREVENT_H
+#define TIMEREVENT_H
 
 #if ARDUINO >= 100
  #include "Arduino.h"
 #else
  #include "WProgram.h"
 #endif
+
+/* The library initially used unsigned long for the period before 0.5.0
+ * Later on, I realised that most events have a period of less than few seconds.
+ * Thus using unsigned long is a waste of RAM. So I changed to unsigned int instead.
+ * You can set periodInInt to 0 to change it back to unsigned long.
+ */
+#define periodInInt 1
 
 
 class TimerEvent {
@@ -28,13 +35,18 @@ class TimerEvent {
   	void disable();
   	void enable();
   	void update();
-	  void setInterval( unsigned long myPeriod );
+  	void setPeriod( unsigned long myPeriod );
+    bool isEnabled();
 
   private: 
-    bool active;
-    unsigned long timer;
-    unsigned long period;
-    void (*function)();
+    bool enabled;
+    unsigned long lastTime;
+    #if periodInInt==1
+      unsigned int period;
+    #else
+      unsigned long period;
+    #endif
+    void (*callBackFunction)();
 		
 };
 
