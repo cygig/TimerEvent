@@ -31,6 +31,8 @@ class TimerEvent {
     TimerEvent();
   	void set(unsigned long myPeriod,void (*myFunction)());
   	void set(unsigned long myTimer,unsigned long myPeriod,void (*myFunction)());
+  	void set(unsigned long myPeriod,void (*myFunction)(const TimerEvent*, void*), void* myContext);
+  	void set(unsigned long myTimer,unsigned long myPeriod,void (*myFunction)(const TimerEvent*, void*), void* myContext);
   	void reset();
   	void disable();
   	void enable();
@@ -47,6 +49,8 @@ class TimerEvent {
       unsigned long period;
     #endif
     void (*callBackFunction)();
+    void (*richCallBackFunction)(const TimerEvent*, void*);
+    void* context;
 		
 };
 

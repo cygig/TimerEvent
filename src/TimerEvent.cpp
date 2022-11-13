@@ -14,7 +14,21 @@ void TimerEvent::set(unsigned long myLastTime,unsigned long myPeriod,void (*myFu
 	period = myPeriod;
 	lastTime = myLastTime;
 	callBackFunction = myFunction;	
-	
+	richCallBackFunction = nullptr;
+	context = nullptr;
+}
+
+void TimerEvent::set(unsigned long myPeriod,void (*myFunction)(const TimerEvent*, void*),void* myContext) {
+    set(millis(), myPeriod, myFunction, myContext);	
+}
+
+void TimerEvent::set(unsigned long myLastTime,unsigned long myPeriod,void (*myFunction)(const TimerEvent*, void*),void* myContext) {
+    enabled = true;
+    period = myPeriod;
+    lastTime = myLastTime;
+    callBackFunction = nullptr;
+    richCallBackFunction = myFunction;
+    context = myContext;
 }
 
 void TimerEvent::reset(){
@@ -31,8 +45,12 @@ void TimerEvent::enable(){
 
 void TimerEvent::update(){
   if ( enabled && ((unsigned long) (millis()-lastTime) >= period) ) {
-    callBackFunction();
-	  lastTime = millis();
+    if (callBackFunction) {
+      callBackFunction();
+    } else if (richCallBackFunction) {
+      richCallBackFunction(this, context);
+    }
+    lastTime = millis();
   }
 }
 
