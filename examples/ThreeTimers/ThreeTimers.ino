@@ -1,10 +1,11 @@
 /*
-TimerEvent 0.5.0 For Arduino by cygig
+TimerEventEx 0.5.1 For Arduino by lcramos05
+TimerEventEx is based on TimerEvent from cygig.
 TimerEvent is based on TimedAction 1.6 by Alexander Brevig (alexanderbrevig@gmail.com).
 It is updated to work with Arduino IDE 1.8.5.
 
-TimerEvent provides an easy way to trigger functions every set time and is a non-blocking alternative
-to delay() function.
+TimerEventEx provides an easy way to trigger functions every set time and is a non-blocking alternative
+to delay() function. It additionally provides a way of calling the callback function passing a context pointer.
 
 */
 
@@ -13,16 +14,16 @@ to delay() function.
 // The second prints a flips a boolean between 1 and 0 every 1361ms.
 // The third prints the time that the sketch has been running every 3000ms.
 
-#include <TimerEvent.h>
+#include <TimerEventEx.h>
 
 const unsigned int timerOnePeriod = 997;
 const unsigned int timerTwoPeriod = 1361;
 const unsigned int timerThreePeriod = 3000;
 
-// Create two TimerEvent instances
-TimerEvent timerOne;
-TimerEvent timerTwo;
-TimerEvent timerThree;
+// Create two TimerEventEx instances
+TimerEventEx timerOne;
+TimerEventEx timerTwo;
+TimerEventEx timerThree;
 
 bool myBool=false;
 

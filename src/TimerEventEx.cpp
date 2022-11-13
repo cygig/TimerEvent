@@ -1,15 +1,15 @@
-#include "TimerEvent.h"
+#include "TimerEventEx.h"
 
-TimerEvent::TimerEvent(){
+TimerEventEx::TimerEventEx(){
 // Nothing inside constructor.
 // We use set instead if not we need to declare myFunction on top of setup().
 }
 
-void TimerEvent::set(unsigned long myPeriod,void (*myFunction)()){
+void TimerEventEx::set(unsigned long myPeriod,void (*myFunction)()){
   set(millis(), myPeriod, myFunction);	
 }
 
-void TimerEvent::set(unsigned long myLastTime,unsigned long myPeriod,void (*myFunction)()){
+void TimerEventEx::set(unsigned long myLastTime,unsigned long myPeriod,void (*myFunction)()){
   enabled = true;
 	period = myPeriod;
 	lastTime = myLastTime;
@@ -18,11 +18,11 @@ void TimerEvent::set(unsigned long myLastTime,unsigned long myPeriod,void (*myFu
 	context = nullptr;
 }
 
-void TimerEvent::set(unsigned long myPeriod,void (*myFunction)(const TimerEvent*, void*),void* myContext) {
+void TimerEventEx::set(unsigned long myPeriod,void (*myFunction)(const TimerEventEx*, void*),void* myContext) {
     set(millis(), myPeriod, myFunction, myContext);	
 }
 
-void TimerEvent::set(unsigned long myLastTime,unsigned long myPeriod,void (*myFunction)(const TimerEvent*, void*),void* myContext) {
+void TimerEventEx::set(unsigned long myLastTime,unsigned long myPeriod,void (*myFunction)(const TimerEventEx*, void*),void* myContext) {
     enabled = true;
     period = myPeriod;
     lastTime = myLastTime;
@@ -31,19 +31,19 @@ void TimerEvent::set(unsigned long myLastTime,unsigned long myPeriod,void (*myFu
     context = myContext;
 }
 
-void TimerEvent::reset(){
+void TimerEventEx::reset(){
     lastTime = millis();
 }
 
-void TimerEvent::disable(){
+void TimerEventEx::disable(){
     enabled = false;
 }
 
-void TimerEvent::enable(){
+void TimerEventEx::enable(){
 	enabled = true;
 }
 
-void TimerEvent::update(){
+void TimerEventEx::update(){
   if ( enabled && ((unsigned long) (millis()-lastTime) >= period) ) {
     if (callBackFunction) {
       callBackFunction();
@@ -54,10 +54,10 @@ void TimerEvent::update(){
   }
 }
 
-void TimerEvent::setPeriod( unsigned long myPeriod){
+void TimerEventEx::setPeriod( unsigned long myPeriod){
 	period = myPeriod;
 }
 
-bool TimerEvent::isEnabled(){
+bool TimerEventEx::isEnabled(){
   return enabled;
 }

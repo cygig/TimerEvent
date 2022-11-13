@@ -1,5 +1,7 @@
-# TimerEvent
-TimerEvent is a non-blocking alternative to the delay() function. It provides an easy way to trigger a callback function every set period of time and using multiple instances of this library enables your Arduino to multitask via time slicing.
+# TimerEventEx
+TimerEventEx is a non-blocking alternative to the delay() function. It provides an easy way to trigger a callback function every set period of time and using multiple instances of this library enables your Arduino to multitask via time slicing.
+
+TimerEventEx is based on TimerEvent from cygig. The difference is that TimerEventEx provides a way of passing a context pointer to the callback function.
 
 TimerEvent is based on TimedAction 1.6 by Alexander Brevig (alexanderbrevig@gmail.com). It is updated to work with Arduino IDE 1.8.5 and above.
 

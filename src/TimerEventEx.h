@@ -1,10 +1,11 @@
 /*
-TimerEvent 0.4.0 For Arduino by cygig
+TimerEventEx 0.5.1 For Arduino by lcramos05
+TimerEventEx is based on TimerEvent from cygig.
 TimerEvent is based on TimedAction 1.6 by Alexander Brevig (alexanderbrevig@gmail.com).
 It is updated to work with Arduino IDE 1.8.5.
 
-TimerEvent provides an easy way to trigger functions every set time and is a non-blocking alternative
-to delay() function.
+TimerEventEx provides an easy way to trigger functions every set time and is a non-blocking alternative
+to delay() function. It also provides a way of calling the callback function passing a context pointer.
 
 */
 
@@ -25,10 +26,10 @@ to delay() function.
 #define periodInInt 1
 
 
-class TimerEvent {
+class TimerEventEx {
   
   public:
-    TimerEvent();
+    TimerEventEx();
   	void set(unsigned long myPeriod,void (*myFunction)());
   	void set(unsigned long myTimer,unsigned long myPeriod,void (*myFunction)());
   	void set(unsigned long myPeriod,void (*myFunction)(const TimerEvent*, void*), void* myContext);
@@ -49,7 +50,7 @@ class TimerEvent {
       unsigned long period;
     #endif
     void (*callBackFunction)();
-    void (*richCallBackFunction)(const TimerEvent*, void*);
+    void (*richCallBackFunction)(const TimerEventEx*, void*);
     void* context;
 		
 };
