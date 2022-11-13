@@ -6,6 +6,8 @@ TimerEventEx is based on TimerEvent from cygig. The difference is that TimerEven
 TimerEvent is based on TimedAction 1.6 by Alexander Brevig (alexanderbrevig@gmail.com). It is updated to work with Arduino IDE 1.8.5 and above.
 
 # Updates
+- 0.5.2
+    - Minor adjustments and fixes
 - 0.5.1
  	- Forked from cygig/TimerEvent and subsequently renamed to TimerEventEx
 	- Included new methods to allow calling callbacks passing a context pointer
@@ -28,10 +30,10 @@ For example: myTimer.set(1000, myFunction);
 ## _void_ set(_unsigned long_ myLastTime, _unsigned long_ myPeriod, _void_ (*myFunction)())
 Similar to the other `set` function, but you can set the last callback time in milliseconds. The library will compare the last callback time against the current time to know if the callback function should be called. It will also update this last callback time after every callback. `myLastTime` is the last callback time in `unsigned long`, which will otherwise be set to the current time if not declared.
 
-## _void_ set(_unsigned long_ myPeriod, _void_ (*myFunction)(_const TimerEvent_ *, _void_ *), _void_ *myContext)
+## _void_ set(_unsigned long_ myPeriod, _void_ (*myFunction)(_const TimerEventEx_ *, _void_ *), _void_ *myContext)
 Similar to the first simpler `set` function, but one can additionally provide an opaque pointer to be used when the callback function is called. This can help in cases where a couple of similar timers are used (like e.g. an array of timers) and there should be a way of telling a single callback function which context the timer relates to.
 
-## _void_ set(_unsigned long_ myLastTime, _unsigned long_ myPeriod, _void_ (*myFunction)(_const TimerEvent_ *, _void_ *), _void_ *myContext)
+## _void_ set(_unsigned long_ myLastTime, _unsigned long_ myPeriod, _void_ (*myFunction)(_const TimerEventEx_ *, _void_ *), _void_ *myContext)
 Similar to the second `set` function, but one can additionally provide an opaque pointer to be used when the callback function is called. This can help in cases where a couple of similar timers are used (like e.g. an array of timers) and there should be a way of telling a single callback function which context the timer relates to.
 
 ## _void_ reset()
