@@ -4,6 +4,9 @@ TimerEvent is a non-blocking alternative to the delay() function. It provides an
 TimerEvent is based on TimedAction 1.6 by Alexander Brevig (alexanderbrevig@gmail.com). It is updated to work with Arduino IDE 1.8.5 and above.
 
 # Updates
+- 0.5.1
+ 	- Forked from cygig/TimerEvent and subsequently renamed to TimerEventEx
+	- Included new methods to allow calling callbacks passing a context pointer
 - 0.5.0
 	- Changed period of timer from `unsigned long` to `unsigned int` as most timer update less than every few seconds to save RAM. You can change `periodInInt ` definition in header file to `0` to set it back to `unsigned long`.
 	- Added isEnabled() to check if the timer is enabled.
