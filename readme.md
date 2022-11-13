@@ -28,10 +28,10 @@ For example: myTimer.set(1000, myFunction);
 ## _void_ set(_unsigned long_ myLastTime, _unsigned long_ myPeriod, _void_ (*myFunction)())
 Similar to the other `set` function, but you can set the last callback time in milliseconds. The library will compare the last callback time against the current time to know if the callback function should be called. It will also update this last callback time after every callback. `myLastTime` is the last callback time in `unsigned long`, which will otherwise be set to the current time if not declared.
 
-## _void_ set(_unsigned long_ myPeriod, _void_ (*myFunction)(_const TimerEvent_ *, _void_ *), _void_ *myContext)
+## _void_ set(_unsigned long_ myPeriod, _void_ (*myFunction)(_const TimerEventEx_ *, _void_ *), _void_ *myContext)
 Similar to the first simpler `set` function, but one can additionally provide an opaque pointer to be used when the callback function is called. This can help in cases where a couple of similar timers are used (like e.g. an array of timers) and there should be a way of telling a single callback function which context the timer relates to.
 
-## _void_ set(_unsigned long_ myLastTime, _unsigned long_ myPeriod, _void_ (*myFunction)(_const TimerEvent_ *, _void_ *), _void_ *myContext)
+## _void_ set(_unsigned long_ myLastTime, _unsigned long_ myPeriod, _void_ (*myFunction)(_const TimerEventEx_ *, _void_ *), _void_ *myContext)
 Similar to the second `set` function, but one can additionally provide an opaque pointer to be used when the callback function is called. This can help in cases where a couple of similar timers are used (like e.g. an array of timers) and there should be a way of telling a single callback function which context the timer relates to.
 
 ## _void_ reset()

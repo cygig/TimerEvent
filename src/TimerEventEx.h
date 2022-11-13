@@ -32,8 +32,8 @@ class TimerEventEx {
     TimerEventEx();
   	void set(unsigned long myPeriod,void (*myFunction)());
   	void set(unsigned long myTimer,unsigned long myPeriod,void (*myFunction)());
-  	void set(unsigned long myPeriod,void (*myFunction)(const TimerEvent*, void*), void* myContext);
-  	void set(unsigned long myTimer,unsigned long myPeriod,void (*myFunction)(const TimerEvent*, void*), void* myContext);
+  	void set(unsigned long myPeriod,void (*myFunction)(const TimerEventEx*, void*), void* myContext);
+  	void set(unsigned long myTimer,unsigned long myPeriod,void (*myFunction)(const TimerEventEx*, void*), void* myContext);
   	void reset();
   	void disable();
   	void enable();
