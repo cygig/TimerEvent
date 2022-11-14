@@ -6,6 +6,8 @@ TimerEventEx is based on TimerEvent from cygig. The difference is that TimerEven
 TimerEvent is based on TimedAction 1.6 by Alexander Brevig (alexanderbrevig@gmail.com). It is updated to work with Arduino IDE 1.8.5 and above.
 
 # Updates
+- 0.5.2
+    - Minor adjustments and fixes
 - 0.5.1
  	- Forked from cygig/TimerEvent and subsequently renamed to TimerEventEx
 	- Included new methods to allow calling callbacks passing a context pointer
